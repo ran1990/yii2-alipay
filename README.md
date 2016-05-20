@@ -1,8 +1,9 @@
 # yii2-alipay
 担保交易扩展
 
+支付宝官方文档改编。。支持手机wap  及pc支付
 安装
-composer require leyestd/yii2-alipay "dev-master"
+composer require alipay/yii2-alipay "*"
 
 配置
 设置common/config/params.php
