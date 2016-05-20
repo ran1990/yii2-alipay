@@ -1,0 +1,29 @@
+{
+    "name": "alipay/yii2-alipay",
+
+    "type": "yii2-extension",
+
+    "description": "Yii framework alipay",
+    "keywords": ["yii2","alipay","yii2 alipay"],
+   
+    "license": "BSD-3-Clause",
+    "support": {
+        "source": "https://github.com/ran1990/yii2-alipay.git"
+    },
+    "authors": [
+        {
+            "name": "ran",
+            "email": "r503948796@163.com"
+        }
+    ],
+
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "leyestd\\alipay\\": ""
+        }
+    }
+}
