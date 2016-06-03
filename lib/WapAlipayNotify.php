@@ -50,7 +50,7 @@ class WapAlipayNotify {
 		    $doc = new \DOMDocument();
 		    $doc->loadXML($params['notify_data']);
 		    $notify_id = $doc->getElementsByTagName( "notify_id" )->item(0)->nodeValue;
-                
+
                 // 获取支付宝远程服务器ATN结果（验证是否是支付宝发来的消息）
             $responseTxt = 'true';
             if (! empty($notify_id)) {
@@ -59,7 +59,7 @@ class WapAlipayNotify {
             
 		    //生成签名结果
 		    $isSign = $this->getSignVeryfy($params, $_POST["sign"],false);
-		    
+
 			//写日志记录
 			//if ($isSign) {
 			//	$isSignStr = 'true';
@@ -153,20 +153,18 @@ class WapAlipayNotify {
 	function getSignVeryfy($para_temp, $sign, $isSort) {
 		//除去待签名参数数组中的空值和签名参数
 		$para_filter = AlipayCore::paraFilter($para_temp);
-		
 
 		//对待签名参数数组排序
 		if($isSort) {
-		    $para_sort = AlipayCore::argSort($para_filter);
+		    $para_filter = AlipayCore::argSort($para_filter);
 		} else {
-		    $para = $this->sortNotifyPara($para);
+		    $para_filter = $this->sortNotifyPara($para_filter);
 		}
-		
 
 		
 		//把数组所有元素，按照“参数=参数值”的模式用“&”字符拼接成字符串
-		$prestr = AlipayCore::createLinkstring($para_sort);
-		
+		$prestr = AlipayCore::createLinkstring($para_filter);
+
 		$isSgin = false;
 		switch (strtoupper(trim($this->alipay_config['sign_type']))) {
 			case "MD5" :
@@ -175,7 +173,7 @@ class WapAlipayNotify {
 			default :
 				$isSgin = false;
 		}
-		
+
 		return $isSgin;
 	}
 
