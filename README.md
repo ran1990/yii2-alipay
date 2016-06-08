@@ -4,7 +4,7 @@
 支付宝官方文档改编。。支持手机wap  及pc支付
 
 安装
-composer require ran2016/yii2-alipay "*"
+composer require life2016/yii2-alipay "*"
 
 配置
 设置common/config/params.php
